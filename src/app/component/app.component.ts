@@ -3,22 +3,19 @@ import { RouterOutlet } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
+import { HelloComponent } from './hello/hello.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, HelloComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   message = '';
   title = 'music-manager';
 
   constructor(private apiService: ApiService) { } 
-  ngOnInit() {
-    this.apiService.getHelloWorld().subscribe(
-      (data) => this.message = data
-    );
-  }
+
 }
