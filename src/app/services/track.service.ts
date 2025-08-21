@@ -15,6 +15,14 @@ export class TrackService {
     return this.http.get(`${this.localUrl}/api/track/${_id}`, { responseType: 'json' });
   }
 
+  getAllTracks() {
+    return this.http.get(`${this.localUrl}/api/tracks`, { responseType: 'json' });
+  }
+
+  addTrack(track: any) {
+    return this.http.post(`${this.localUrl}/api/track`, track, { responseType: 'json' });
+  }
+
 }
 
 

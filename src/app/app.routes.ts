@@ -10,5 +10,13 @@ export const routes: Routes = [
 	{
 		path: 'api/track/:id',
 		component: TrackComponent
-	}
+	},
+    {
+        path: 'api/tracks',
+        component: TrackComponent
+    },
+    {
+        path: 'api/track',
+        component: TrackComponent
+    }
 ];
