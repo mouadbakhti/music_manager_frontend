@@ -1,0 +1,19 @@
+<form class="track-form" [formGroup]="newTrack" (submit)="addNewTrack()">
+  <div class="form-group">
+    <label for="idLabel">ID</label>
+    <input formControlName="id" type="text" class="form-control" id="idLabel" placeholder="Enter ID">
+  </div>
+  <div class="form-group">
+    <label for="titleLabel">Title</label>
+    <input formControlName="title" type="text" class="form-control" id="titleLabel" placeholder="Enter Title">
+  </div>
+  <div class="form-group">
+    <label for="artistLabel">Artist</label>
+    <input formControlName="artist" type="text" class="form-control" id="artistLabel" placeholder="Enter Artist">
+  </div>
+  <div class="form-group">
+    <label for="durationLabel">Duration</label>
+    <input formControlName="duration" type="number" class="form-control" id="durationLabel" placeholder="Enter Duration">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Track</button>
+</form>

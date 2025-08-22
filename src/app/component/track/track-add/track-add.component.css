@@ -1,0 +1,77 @@
+/* Modern aesthetic form styles */
+
+.track-form {
+	max-width: 420px;
+	margin: 2.5rem auto;
+	padding: 2.5rem 2rem;
+	background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+	border-radius: 24px;
+	box-shadow: 0 8px 32px rgba(67,198,172,0.18);
+	border: 2px solid #43c6ac;
+	position: relative;
+	overflow: hidden;
+}
+
+.track-form::before {
+	content: "";
+	position: absolute;
+	top: -40px;
+	right: -40px;
+	width: 120px;
+	height: 120px;
+	background: radial-gradient(circle, #43c6ac 60%, #f8ffae 100%);
+	opacity: 0.25;
+	border-radius: 50%;
+	z-index: 0;
+}
+
+.track-form label {
+	font-weight: 600;
+	color: #2d3a4a;
+	margin-bottom: 0.5rem;
+	letter-spacing: 0.03em;
+}
+
+.track-form input[type="text"],
+.track-form input[type="number"] {
+	width: 100%;
+	padding: 0.85rem;
+	border: 1.5px solid #43c6ac;
+	border-radius: 12px;
+	margin-bottom: 1.3rem;
+	font-size: 1.05rem;
+	background: #f8ffae;
+	color: #2d3a4a;
+	transition: border-color 0.2s, box-shadow 0.2s;
+	box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+}
+.track-form input:focus {
+	border-color: #ff6a88;
+	box-shadow: 0 0 0 2px #ff6a8833;
+	outline: none;
+}
+
+.track-form button {
+	width: 100%;
+	padding: 0.85rem;
+	background: linear-gradient(90deg, #ff6a88 0%, #43c6ac 100%);
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	font-size: 1.15rem;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 4px 16px rgba(255,106,136,0.12);
+	transition: background 0.2s, transform 0.2s;
+	letter-spacing: 0.04em;
+}
+.track-form button:hover {
+	background: linear-gradient(90deg, #43c6ac 0%, #ff6a88 100%);
+	transform: translateY(-2px) scale(1.03);
+}
+
+.track-form input[type="text"]::placeholder,
+.track-form input[type="number"]::placeholder {
+	color: #a0b3c6;
+	opacity: 1;
+}

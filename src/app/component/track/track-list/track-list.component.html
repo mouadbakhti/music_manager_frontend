@@ -1,0 +1,13 @@
+<div class="track-grid">
+    <div class="track-card" *ngFor="let track of tracks">
+        <div class="cover" *ngIf="track.coverUrl">
+            <img [src]="track.coverUrl" alt="{{ track.title }}">
+        </div>
+        <div class="info">
+            <h5>{{ track.title }}</h5>
+            <p>{{ track.artist }}</p>
+            <span>{{ track.duration }}s</span>
+        </div>
+        <button class="btn btn-sm btn-primary">Play</button>
+    </div>
+</div>
