@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Injectable } from '@angular/core';
 
 export class TrackService {
   private localUrl = 'http://localhost:8080';
+  searchQuery$ = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) { };
 
@@ -28,6 +30,10 @@ export class TrackService {
 
   updateTrackById(id: number, track: any) {
     return this.http.put(`${this.localUrl}/api/track/${id}`, track, { responseType: 'json' });
+  }
+
+  searchTracks(query: string) {
+    return this.http.get(`${this.localUrl}/api/tracks/search?query=${query}`, { responseType: 'json' });
   }
 
 }

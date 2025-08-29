@@ -15,6 +15,7 @@ export class TrackListComponent {
 
   track: any;
   tracks: any[] = [];
+  allTracks: any[] = []; // Add this line
   isModalOpen = false;
   editingTrack: Track = {} as Track;
 
@@ -32,9 +33,23 @@ export class TrackListComponent {
     });
 
     this.trackService.getAllTracks().subscribe({
-      next: (data) => this.tracks = data as any[],
+      next: (data) => {
+        this.tracks = data as any[];
+        this.allTracks = data as any[]; // Add this line
+      },
       error: (err) => console.error('Error:', err)
     });
+
+    this.trackService.searchQuery$.subscribe(query => {
+      this.filterTracks(query);
+    });
+  }
+
+  filterTracks(query: string) {
+    this.tracks = this.allTracks.filter(track =>
+      track.title.toLowerCase().includes(query.trim().toLowerCase()) ||
+      track.artist.toLowerCase().includes(query.trim().toLowerCase())
+    );
   }
 
   deleteTrack(id: number) {
