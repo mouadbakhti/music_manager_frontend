@@ -1,20 +1,20 @@
-/* Enhance Bootstrap navbar with app aesthetic */
+/* Enhanced Bootstrap navbar with matching track card/modal colors */
 .navbar {
-	background: linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%) !important;
+	background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%) !important;
 	border-radius: 18px;
-	box-shadow: 0 4px 24px rgba(67,198,172,0.12);
+	box-shadow: 0 4px 24px rgba(33,150,243,0.12);
 	padding: 1.2rem 2rem;
 	margin: 2rem auto;
 	max-width: 900px;
 }
 .navbar-brand {
 	font-weight: 700;
-	color: #2d3a4a !important;
+	color: #0d47a1 !important;
 	font-size: 1.3rem;
 	letter-spacing: 0.04em;
 }
 .navbar-nav .nav-link {
-	color: #43c6ac !important;
+	color: #1976d2 !important;
 	font-weight: 600;
 	font-size: 1.05rem;
 	border-radius: 10px;
@@ -22,32 +22,32 @@
 	transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-	background: linear-gradient(90deg, #ff6a88 0%, #43c6ac 100%);
+	background: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
 	color: #fff !important;
 	transform: scale(1.03);
 }
 .navbar-toggler {
 	border: none;
-	background: #43c6ac;
+	background: #90caf9;
 }
 .navbar-toggler-icon {
-	background-image: linear-gradient(90deg, #ff6a88 0%, #43c6ac 100%);
+	background-image: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
 }
 .form-inline .form-control {
 	border-radius: 8px;
-	border: 1.5px solid #43c6ac;
-	background: #f8ffae;
-	color: #2d3a4a;
+	border: 1.5px solid #90caf9;
+	background: #e3f2fd;
+	color: #0d47a1;
 }
 .btn-outline-success {
 	border-radius: 8px;
-	background: linear-gradient(90deg, #ff6a88 0%, #43c6ac 100%);
+	background: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
 	color: #fff;
 	border: none;
 	font-weight: 600;
 	transition: background 0.2s, color 0.2s;
 }
 .btn-outline-success:hover {
-	background: linear-gradient(90deg, #43c6ac 0%, #ff6a88 100%);
+	background: linear-gradient(90deg, #1e88e5 0%, #1565c0 100%);
 	color: #fff;
 }
