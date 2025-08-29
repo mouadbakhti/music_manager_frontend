@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +20,14 @@ export class TrackService {
 
   addTrack(track: any) {
     return this.http.post(`${this.localUrl}/api/track`, track, { responseType: 'json' });
+  }
+
+  deleteTrackById(id: number) {
+    return this.http.delete(`${this.localUrl}/api/track/${id}`, { responseType: 'json' });
+  }
+
+  updateTrackById(id: number, track: any) {
+    return this.http.put(`${this.localUrl}/api/track/${id}`, track, { responseType: 'json' });
   }
 
 }

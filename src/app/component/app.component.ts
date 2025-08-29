@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { error } from 'console';
 import { CommonModule } from '@angular/common';
-import { HelloComponent } from './hello/hello.component';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HelloComponent } from './component/hello/hello.component';
 import { TrackComponent } from './component/track/track.component';
+import { trackRoutes } from './component/track/track.routes';
 
 export const routes: Routes = [
 	{
@@ -8,15 +9,8 @@ export const routes: Routes = [
 		component: HelloComponent
 	},
 	{
-		path: 'api/track/:id',
-		component: TrackComponent
+		path: 'track',
+		children: trackRoutes
 	},
-    {
-        path: 'api/tracks',
-        component: TrackComponent
-    },
-    {
-        path: 'api/track',
-        component: TrackComponent
-    }
+	{ path: '', redirectTo: 'tracks', pathMatch: 'full' }
 ];

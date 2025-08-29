@@ -8,6 +8,27 @@
             <p>{{ track.artist }}</p>
             <span>{{ track.duration }}s</span>
         </div>
-        <button class="btn btn-sm btn-primary">Play</button>
+        <div class="d-flex gap-2 mt-2">
+            <button type="button" (click)="deleteTrack(track.id)" class="btn btn-sm btn-danger">Delete</button>
+            <button type="button" (click)="openEditModal(track)" class="btn btn-sm btn-secondary">Edit</button>
+        </div>
     </div>
+</div>
+
+<!-- Modal OUTSIDE the *ngFor -->
+<div *ngIf="isModalOpen" class="modal">
+    <form (ngSubmit)="updateTrack(editingTrack.id)">
+        <div class="modal-field">
+            <label for="title" class="form-label">Song</label>
+            <input id="title" [(ngModel)]="editingTrack.title" name="title" placeholder="Title">
+        </div>
+        <div class="modal-field">
+            <label for="artist" class="form-label">Artist</label>
+            <input id="artist" [(ngModel)]="editingTrack.artist" name="artist" placeholder="Artist">
+        </div>
+        <div class="modal-actions">
+            <button type="submit">Save</button>
+            <button type="button" (click)="closeModal()">Cancel</button>
+        </div>
+    </form>
 </div>

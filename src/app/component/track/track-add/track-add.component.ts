@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TrackService } from '../../../services/track.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ export class TrackAddComponent {
   tracks: any[] = [];
   newTrack: any;
 
-  constructor(private trackService: TrackService, private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private trackService: TrackService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
     this.newTrack = this.fb.group({
       id: [],
       title: [],
@@ -33,6 +33,8 @@ export class TrackAddComponent {
         this.trackService.getAllTracks().subscribe({
           next: (tracks) => this.tracks = tracks as any[]
         });
+        this.newTrack.reset();
+        this.router.navigate(['/track/list']);
       },
       error: (err) => console.error('Error:', err)
     });
