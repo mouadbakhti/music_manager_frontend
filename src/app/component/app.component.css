@@ -1,0 +1,30 @@
+body,
+:host,
+.app-root {
+  background: #000 !important;
+  color: #fff;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: inherit;
+}
+
+/* Ensure Angular root container fills the viewport */
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/* If using a global wrapper class */
+.app-root {
+  min-height: 100vh;
+  width: 100vw;
+  background: #000;
+}
+
+/* Optionally, remove default margin/padding */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}

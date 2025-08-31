@@ -15,9 +15,12 @@ export class TrackListComponent {
 
   track: any;
   tracks: any[] = [];
-  allTracks: any[] = []; // Add this line
+  allTracks: any[] = []; 
   isModalOpen = false;
   editingTrack: Track = {} as Track;
+  successMessage = ''; // Add this line
+  showDeleteModal = false;
+  trackToDelete: any = null;
 
   constructor(private trackService: TrackService, private route: ActivatedRoute) { }
 
@@ -53,8 +56,15 @@ export class TrackListComponent {
   }
 
   deleteTrack(id: number) {
+    const confirmed = window.confirm('Are you sure you want to delete this track?');
+    if (!confirmed) return;
+
     this.trackService.deleteTrackById(id).subscribe({
-      next: () => this.tracks = this.tracks.filter(track => track.id !== id),
+      next: () => {
+        this.tracks = this.tracks.filter(track => track.id !== id);
+        this.successMessage = 'Track deleted successfully!';
+        setTimeout(() => this.successMessage = '', 2500); // Hide after 2.5s
+      },
       error: (err) => console.error('Error:', err)
     });
   }
@@ -78,5 +88,31 @@ export class TrackListComponent {
       },
       error: (err) => console.error('Error:', err)
     });
+  }
+
+  openDeleteModal(track: any) {
+    this.trackToDelete = track;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    this.trackService.deleteTrackById(this.trackToDelete.id).subscribe({
+      next: () => {
+        this.tracks = this.tracks.filter(t => t.id !== this.trackToDelete.id);
+        this.successMessage = 'Track deleted successfully!';
+        setTimeout(() => this.successMessage = '', 2500);
+        this.showDeleteModal = false;
+        this.trackToDelete = null;
+      },
+      error: (err) => {
+        this.showDeleteModal = false;
+        this.trackToDelete = null;
+      }
+    });
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.trackToDelete = null;
   }
 }

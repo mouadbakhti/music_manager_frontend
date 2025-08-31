@@ -1,42 +1,46 @@
-/* Track grid and card styles */
+/* Grid layout */
 .track-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin: 2.5rem auto;
-  max-width: 900px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #000; /* full black */
+  color: #fff;
+  width: 100vw;           /* Take full viewport width */
+  max-width: none;        /* Remove max-width constraint */
+  margin: 0;              /* Remove auto margin */
+  border-radius: 0;       /* Remove border radius for edge-to-edge */
+  box-sizing: border-box; /* Ensure padding is included in width */
+  height: auto; /* Let grid size to content */
 }
 
+/* Track card */
 .track-card {
-  background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.12);
-  padding: 1.5rem 1.2rem;
+  background: #111; /* dark blackish background */
+  color: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(148, 0, 211, 0.3); /* dark violet glow */
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  transition: transform 0.18s, box-shadow 0.18s;
-
-  /* Pattern overlay */
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
-  background-size: 22px 22px;
 }
 
 .track-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(148, 0, 211, 0.6);
 }
 
-
+/* Cover image */
 .track-card .cover {
   width: 150px;
   height: 150px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1rem;
-  background: #e0e0e0;
+  background: #111;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,94 +50,94 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
 }
 
+/* Info */
 .track-card .info {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.track-card h5 {
+.track-card .info h5 {
+  margin: 0;
   font-size: 1.1rem;
-  font-weight: 700;
-  color: #0d47a1;
-  margin: 0 0 0.3rem 0;
-}
-
-.track-card p {
-  font-size: 0.95rem;
-  color: #1976d2;
-  margin: 0 0 0.2rem 0;
-}
-
-.track-card span {
-  font-size: 0.9rem;
-  color: #607d8b;
-}
-
-.track-card button {
-  margin-top: 0.8rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
-  color: #fff;
-  border: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
-  transition: background 0.2s, transform 0.2s;
+  color: #fff;
 }
 
-.track-card button:hover {
-  background: linear-gradient(90deg, #1e88e5 0%, #1565c0 100%);
-  transform: scale(1.05);
+.track-card .info p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
-/* Variants */
-.track-card .btn-danger {
-  background: linear-gradient(90deg, #ef5350 0%, #e53935 100%);
+.track-card .info span {
+  font-size: 0.8rem;
+  color: #aaa;
 }
 
-.track-card .btn-danger:hover {
-  background: linear-gradient(90deg, #e53935 0%, #c62828 100%);
-}
-
+/* Buttons */
 .track-card .btn-secondary {
-  background: linear-gradient(90deg, #64b5f6 0%, #2196f3 100%);
+  background: linear-gradient(90deg, #4b0082, #8a2be2);
+  border: none;
+  color: #fff;
 }
 
 .track-card .btn-secondary:hover {
-  background: linear-gradient(90deg, #2196f3 0%, #1565c0 100%);
+  background: linear-gradient(90deg, #8a2be2, #4b0082);
+}
+
+.track-card .btn-danger {
+  background: linear-gradient(90deg, #b22222, #dc143c);
+  border: none;
+  color: #fff;
+}
+
+.track-card .btn-danger:hover {
+  background: linear-gradient(90deg, #dc143c, #b22222);
+}
+
+/* Alert styles */
+.alert-success {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0d1f 100%);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(148, 0, 211, 0.15);
+  width: 100%;
+  max-width: 900px;
+  position: static;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1.5px solid #4b0082;
+  letter-spacing: 0.02em;
 }
 
 /* Modal */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(33, 150, 243, 0.15);
-  backdrop-filter: blur(4px);
+  inset: 0;
+  background: rgba(0,0,0,0.85);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  animation: modalFadeIn 0.3s;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  z-index: 50;
 }
 
 .modal form {
-  background: #ffffff;
-  padding: 2.5rem 2rem;
+  background: #111;
+  padding: 2rem;
   border-radius: 16px;
-  min-width: 320px;
-  box-shadow: 0 6px 28px rgba(33, 150, 243, 0.2);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(138,43,226,0.7);
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,7 +146,7 @@
 
 .modal h2 {
   margin-bottom: 1rem;
-  color: #0d47a1;
+  color: #b388ff;
   font-weight: 700;
   font-size: 1.3rem;
   letter-spacing: 0.02em;
@@ -152,21 +156,22 @@
   width: 100%;
   padding: 0.7rem 1rem;
   border-radius: 8px;
-  border: 1px solid #90caf9;
+  border: 1px solid #4b0082;
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  background: #f9f9f9;
+  background: #1c1c1c;
+  color: #fff;
   transition: border-color 0.2s, background 0.2s;
 }
 
 .modal input:focus {
-  border-color: #42a5f5;
-  background: #fff;
+  border-color: #9c27b0;
+  background: #000;
   outline: none;
 }
 
 .modal button[type="submit"] {
-  background: linear-gradient(90deg, #42a5f5 0%, #1e88e5 100%);
+  background: linear-gradient(90deg, #4b0082, #8a2be2);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -174,17 +179,17 @@
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+  box-shadow: 0 2px 8px rgba(106, 13, 173, 0.4);
   transition: background 0.2s, transform 0.2s;
 }
 
 .modal button[type="submit"]:hover {
-  background: linear-gradient(90deg, #1e88e5 0%, #1565c0 100%);
+  background: linear-gradient(90deg, #8a2be2, #4b0082);
   transform: scale(1.05);
 }
 
 .modal button[type="button"] {
-  background: linear-gradient(90deg, #ef5350 0%, #e53935 100%);
+  background: #444;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -193,12 +198,12 @@
   font-size: 1rem;
   cursor: pointer;
   margin-left: 0.5rem;
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.15);
+  box-shadow: 0 2px 8px rgba(183, 28, 28, 0.4);
   transition: background 0.2s, transform 0.2s;
 }
 
 .modal button[type="button"]:hover {
-  background: linear-gradient(90deg, #e53935 0%, #c62828 100%);
+  background: #666;
   transform: scale(1.05);
 }
 
@@ -216,27 +221,102 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .modal-field label {
+  display: block;
   min-width: 60px;
   font-weight: 500;
-  color: #0d47a1;
+  color: #aaa;
   margin-bottom: 0;
 }
 
 .modal-field input {
   flex: 1;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #90caf9;
+  width: 100%;
+  padding: 0.75rem;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #fff;
   font-size: 1rem;
-  background: #f9f9f9;
   transition: border-color 0.2s, background 0.2s;
 }
 
 .modal-field input:focus {
-  border-color: #42a5f5;
-  background: #fff;
   outline: none;
+  border-color: #8a2be2;
+  box-shadow: 0 0 8px rgba(138,43,226,0.6);
+}
+
+/* Validation styles */
+.invalid-input {
+  border: 2px solid #b22222 !important;
+  background: #1a0d1f;
+}
+
+.error-message {
+  color: #b388ff;
+  font-size: 0.98rem;
+  margin-top: 0.3rem;
+  padding-left: 0.2rem;
+}
+
+/* Match delete confirmation modal buttons with edit modal buttons */
+
+.modal-content {
+  background: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(148, 0, 211, 0.7);
+  border: 2px solid #4b0082;
+  padding: 2rem 2.5rem;
+  color: #fff;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.modal-content p {
+  color: #b388ff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.confirmation-modal .modal-content button {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  box-shadow: 0 2px 8px rgba(106, 13, 173, 0.4);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.confirmation-modal .modal-content button.confirm {
+  background: linear-gradient(90deg, #4b0082, #8a2be2);
+  color: #fff;
+}
+
+.confirmation-modal .modal-content button.confirm:hover {
+  background: linear-gradient(90deg, #8a2be2, #4b0082);
+  transform: scale(1.05);
+}
+
+.confirmation-modal .modal-content button.cancel {
+  background: #444;
+  color: #fff;
+}
+
+.confirmation-modal .modal-content button.cancel:hover {
+  background: #666;
+  transform: scale(1.05);
 }
