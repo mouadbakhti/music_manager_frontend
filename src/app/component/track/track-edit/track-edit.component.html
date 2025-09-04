@@ -1,0 +1,37 @@
+<form class="track-form" [formGroup]="editingTrack" (submit)="updateTrack()">
+  <!-- <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div> -->
+  <div class="form-group">
+    <label for="titleLabel">Title</label>
+    <input formControlName="title" type="text" class="form-control"
+      [class.invalid-input]="editingTrack.get('title')?.invalid && editingTrack.get('title')?.touched"
+      required id="titleLabel" placeholder="Enter Title">
+    <div *ngIf="editingTrack.get('title')?.invalid && editingTrack.get('title')?.touched" class="error-message">
+      Title is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="artistLabel">Artist</label>
+    <input formControlName="artist" type="text" class="form-control"
+      [class.invalid-input]="editingTrack.get('artist')?.invalid && editingTrack.get('artist')?.touched"
+      required id="artistLabel" placeholder="Enter Artist">
+    <div *ngIf="editingTrack.get('artist')?.invalid && editingTrack.get('artist')?.touched" class="error-message">
+      Artist is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="durationLabel">Duration</label>
+    <input formControlName="duration" type="number" class="form-control"
+      [class.invalid-input]="editingTrack.get('duration')?.invalid && editingTrack.get('duration')?.touched"
+      required id="durationLabel" placeholder="Enter Duration">
+    <div *ngIf="editingTrack.get('duration')?.invalid && editingTrack.get('duration')?.touched" class="error-message">
+      Duration must be a positive number.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="coverLabel">Cover</label>
+    <input formControlName="coverUrl" type="text" class="form-control" id="coverLabel" placeholder="Enter Cover URL">
+  </div>
+  <button type="submit" class="btn btn-primary">Update Track</button>
+</form>

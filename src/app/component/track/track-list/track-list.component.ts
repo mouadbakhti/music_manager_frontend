@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TrackService } from '../../../services/track.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Track } from '../../../models/track.model';
 import { FormsModule } from '@angular/forms';
@@ -21,10 +21,24 @@ export class TrackListComponent {
   successMessage = ''; // Add this line
   showDeleteModal = false;
   trackToDelete: any = null;
+  trackEditComponent: any;
 
-  constructor(private trackService: TrackService, private route: ActivatedRoute) { }
+  constructor(
+    private trackService: TrackService, 
+    private route: ActivatedRoute, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    // Show success message if passed from navigation
+    if (history.state && history.state.successMessage) {
+      this.successMessage = history.state.successMessage;
+      setTimeout(() => this.successMessage = '', 2500);
+
+      // Clear the message so it doesn't persist on refresh
+      history.replaceState({}, document.title);
+    }
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -56,49 +70,9 @@ export class TrackListComponent {
   }
 
   deleteTrack(id: number) {
-    const confirmed = window.confirm('Are you sure you want to delete this track?');
-    if (!confirmed) return;
-
     this.trackService.deleteTrackById(id).subscribe({
       next: () => {
         this.tracks = this.tracks.filter(track => track.id !== id);
-        this.successMessage = 'Track deleted successfully!';
-        setTimeout(() => this.successMessage = '', 2500); // Hide after 2.5s
-      },
-      error: (err) => console.error('Error:', err)
-    });
-  }
-
-  openEditModal(track: Track) {
-    this.editingTrack = { ...track };
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
-    this.editingTrack = {} as Track;
-  }
-
-  updateTrack(id: number) {
-    this.trackService.updateTrackById(id, this.editingTrack).subscribe({
-      next: (updatedTrack) => {
-        // update local list immutably
-        this.tracks = this.tracks.map(t => t.id === id ? updatedTrack : t);
-        this.closeModal();
-      },
-      error: (err) => console.error('Error:', err)
-    });
-  }
-
-  openDeleteModal(track: any) {
-    this.trackToDelete = track;
-    this.showDeleteModal = true;
-  }
-
-  confirmDelete() {
-    this.trackService.deleteTrackById(this.trackToDelete.id).subscribe({
-      next: () => {
-        this.tracks = this.tracks.filter(t => t.id !== this.trackToDelete.id);
         this.successMessage = 'Track deleted successfully!';
         setTimeout(() => this.successMessage = '', 2500);
         this.showDeleteModal = false;
@@ -111,8 +85,23 @@ export class TrackListComponent {
     });
   }
 
+  openDeleteModal(track: any) {
+    this.trackToDelete = track;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.trackToDelete) {
+      this.deleteTrack(this.trackToDelete.id);
+    }
+  }
+
   cancelDelete() {
     this.showDeleteModal = false;
     this.trackToDelete = null;
+  }
+
+  editTrack(track: any) {
+    this.router.navigate(['/track/edit', track.id]);
   }
 }

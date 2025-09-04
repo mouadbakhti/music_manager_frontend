@@ -1,0 +1,118 @@
+/* Modern aesthetic form styles */
+
+.track-form {
+	max-width: 420px;
+	margin: 2.5rem auto;
+	padding: 2.5rem 2rem;
+	background: #000; /* full black */
+	border-radius: 18px;
+	box-shadow: 0 4px 24px rgba(148, 0, 211, 0.18); /* dark violet glow */
+	border: 2px solid #4b0082;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch; /* Make children stretch to full width */
+	gap: 1.2rem;
+}
+
+.track-form::before {
+	content: "";
+	position: absolute;
+	top: -40px;
+	right: -40px;
+	width: 120px;
+	height: 120px;
+	background: radial-gradient(circle, #4b0082 60%, #000 100%);
+	opacity: 0.18;
+	border-radius: 50%;
+	z-index: 0;
+}
+
+.track-form .form-group {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.track-form label {
+	font-weight: 600;
+	color: #b388ff; /* violet for labels */
+	margin-bottom: 0.5rem;
+	letter-spacing: 0.03em;
+}
+
+.track-form input[type="text"],
+.track-form input[type="number"] {
+	width: 100%;
+	padding: 0.85rem;
+	border: 1.5px solid #4b0082;
+	border-radius: 12px;
+	font-size: 1.15rem;
+	background: #1c1c1c;
+	color: #ccc; /* soft grey, matches artist names in track list */
+	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	box-shadow: 0 2px 8px rgba(148, 0, 211, 0.08);
+	box-sizing: border-box;
+}
+.track-form input:focus {
+	border-color: #8a2be2;
+	background: #000;
+	outline: none;
+}
+
+.track-form button {
+	width: 60%;
+	padding: 0.7rem;
+	background: linear-gradient(90deg, #4b0082 0%, #8a2be2 100%);
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	font-size: 1.08rem;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 4px 16px rgba(148, 0, 211, 0.12);
+	transition: background 0.2s, transform 0.2s;
+	letter-spacing: 0.04em;
+	margin-top: 1rem;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.track-form input[type="text"]::placeholder,
+.track-form input[type="number"]::placeholder {
+	color: #ccc; /* soft grey for placeholders */
+	opacity: 1;
+}
+
+/* Alert styles */
+.alert-success {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0d1f 100%);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(148, 0, 211, 0.15);
+  width: 100%;
+  position: static;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1.5px solid #4b0082;
+  letter-spacing: 0.02em;
+}
+
+/* Validation styles */
+.invalid-input {
+  border: 2px solid #b22222 !important;
+  background: #1a0d1f;
+}
+
+.error-message {
+  color: #b388ff;
+  font-size: 0.98rem;
+  margin-top: 0.3rem;
+  padding-left: 0.2rem;
+}
